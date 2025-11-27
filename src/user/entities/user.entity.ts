@@ -1,6 +1,5 @@
 import { ApiKey } from "src/api-key/entities/api-key.entity";
-import { Column, Entity, JoinColumn, PrimaryGeneratedColumn } from "typeorm";
-import { OneToOne } from "typeorm/browser";
+import { Column, Entity, JoinColumn, PrimaryGeneratedColumn, OneToOne } from "typeorm";
 
 @Entity()
 export class User {
