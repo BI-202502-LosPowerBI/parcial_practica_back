@@ -7,6 +7,7 @@ import { ProffesorModule } from './proffesor/proffesor.module';
 import { CursoModule } from './curso/curso.module';
 import { OficinaModule } from './oficina/oficina.module';
 import { EstudianteModule } from './estudiante/estudiante.module';
+import { ApiKeyModule } from './api-key/api-key.module';
 
 @Module({
   imports: [
@@ -24,7 +25,8 @@ import { EstudianteModule } from './estudiante/estudiante.module';
     ProffesorModule,
     CursoModule,
     OficinaModule,
-    EstudianteModule
+    EstudianteModule,
+    ApiKeyModule
   ],
   controllers: [AppController],
   providers: [AppService],
