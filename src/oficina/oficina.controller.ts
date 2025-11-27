@@ -31,4 +31,9 @@ export class OficinaController {
   remove(@Param('id') id: string) {
     return this.oficinaService.remove(+id);
   }
+
+  @Post(':oficinaId/proffesor/:proffesorId')
+  asignarProffesor(@Param('oficinaId') oficinaId: string, @Param('proffesorId') proffesorId: string) {
+    return this.oficinaService.asignarProffesor(+oficinaId, +proffesorId);
+  }
 }
