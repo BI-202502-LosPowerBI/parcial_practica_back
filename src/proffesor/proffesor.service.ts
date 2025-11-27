@@ -14,8 +14,6 @@ export class ProffesorService {
     @InjectRepository(Proffesor)
     private readonly proffesorRepository: Repository<Proffesor>,
 
-    private readonly oficinaService: OficinaService,
-
   ) {}
 
   async create(createProffesorDto: CreateProffesorDto) {
@@ -92,7 +90,7 @@ export class ProffesorService {
       }
 
       if ( proffesor.oficina ) {
-        await this.oficinaService.removerProffesor(proffesor.oficina.id);
+        throw new BadRequestException(`Cannot delete proffesor with id ${ id } because has an assigned oficina`);
       }
 
       return await this.proffesorRepository.remove(proffesor);

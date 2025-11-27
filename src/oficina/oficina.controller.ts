@@ -36,4 +36,9 @@ export class OficinaController {
   asignarProffesor(@Param('oficinaId') oficinaId: string, @Param('proffesorId') proffesorId: string) {
     return this.oficinaService.asignarProffesor(+oficinaId, +proffesorId);
   }
+
+  @Delete(':oficinaId/proffesor')
+  removerProffesor(@Param('oficinaId') oficinaId: string) {
+    return this.oficinaService.removerProffesor(+oficinaId);
+  }
 }
