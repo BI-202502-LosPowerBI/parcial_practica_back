@@ -12,16 +12,6 @@ export class ApiKeyService {
         private readonly apiKeyRepository: Repository<ApiKey>
 
     ) {}
-
-    async create(key: string) {
-        try {
-            const apiKey = this.apiKeyRepository.create({ key });
-            return await this.apiKeyRepository.save(apiKey);
-        }
-        catch (error) {
-            this.handleDBExceptions(error);
-        }
-    }
             
     async findByKey(key: string) {
         try {
