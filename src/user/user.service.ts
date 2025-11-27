@@ -28,7 +28,6 @@ export class UserService {
       apiKey
     });
 
-    await this.apiKeyRepository.save(apiKey);
     return await this.userRepository.save(user);
   }
 }

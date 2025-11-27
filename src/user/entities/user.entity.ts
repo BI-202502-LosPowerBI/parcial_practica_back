@@ -13,7 +13,7 @@ export class User {
     @Column({ unique: true })
     email: string;
 
-    @OneToOne(() => ApiKey, apiKey => apiKey.user)
+    @OneToOne(() => ApiKey, apiKey => apiKey.user, { cascade: true })
     @JoinColumn()
     apiKey: ApiKey;
 }
