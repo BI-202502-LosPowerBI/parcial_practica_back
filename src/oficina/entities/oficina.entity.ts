@@ -18,5 +18,5 @@ export class Oficina {
 
     @OneToOne(() => Proffesor, proffesor => proffesor.oficina)
     @JoinColumn()
-    proffesor: Proffesor;
+    proffesor?: Proffesor | null;
 }

@@ -81,11 +81,16 @@ export class OficinaService {
   async remove(id: number) {
     try {
       const oficina = await this.oficinaRepository.findOne({
-        where: { id }
+        where: { id },
+        relations: { proffesor: true }
       });
 
       if ( !oficina ) {
         throw new NotFoundException(`Oficina with id ${ id } not found`);
+      }
+
+      if ( oficina.proffesor ) {
+        throw new BadRequestException(`Cannot delete oficina with id ${ id } because it has an assigned proffesor`);
       }
 
       return await this.oficinaRepository.remove(oficina);
@@ -124,6 +129,29 @@ export class OficinaService {
       }
 
       oficina.proffesor = proffesor;
+      return await this.oficinaRepository.save(oficina);
+    }
+    catch (error) {
+      this.handleDBExceptions(error);
+    }
+  }
+
+  async removerProffesor( oficinaId: number ) {
+    try {
+      const oficina = await this.oficinaRepository.findOne({
+        where: { id: oficinaId },
+        relations: { proffesor: true }
+      });
+
+      if ( !oficina ) {
+        throw new NotFoundException(`Oficina with id ${ oficinaId } not found`);
+      }
+
+      if ( !oficina.proffesor ) {
+        throw new BadRequestException(`Oficina with id ${ oficinaId } has no proffesor assigned`);
+      }
+
+      oficina.proffesor = null;
       return await this.oficinaRepository.save(oficina);
     }
     catch (error) {
