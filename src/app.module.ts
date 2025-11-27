@@ -8,6 +8,7 @@ import { CursoModule } from './curso/curso.module';
 import { OficinaModule } from './oficina/oficina.module';
 import { EstudianteModule } from './estudiante/estudiante.module';
 import { ApiKeyModule } from './api-key/api-key.module';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -26,7 +27,8 @@ import { ApiKeyModule } from './api-key/api-key.module';
     CursoModule,
     OficinaModule,
     EstudianteModule,
-    ApiKeyModule
+    ApiKeyModule,
+    UserModule
   ],
   controllers: [AppController],
   providers: [AppService],

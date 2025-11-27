@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { User } from "src/user/entities/user.entity";
+import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class ApiKey {
@@ -14,4 +15,7 @@ export class ApiKey {
 
     @Column({ default: 20 })
     attempts: number;
+
+    @OneToOne(() => User, user => user.apiKey)
+    user: User;
 }
